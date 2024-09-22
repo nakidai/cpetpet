@@ -36,7 +36,6 @@ echo "
 #define __CONFIG_H__
 
 #define SHAREDIR \"$DESTDIR/share/cpetpet\"
-#define FRAMES 10
 
 #endif
 " > config.h

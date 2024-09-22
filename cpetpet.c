@@ -11,7 +11,9 @@
 #include "config.h"
 
 
-static char *gifs[] = {
+#define FRAMES 10
+
+static char *gifs[FRAMES] = {
     SHAREDIR "/pet0.gif",
     SHAREDIR "/pet1.gif",
     SHAREDIR "/pet2.gif",
