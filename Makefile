@@ -28,10 +28,14 @@ install: all
 	install -m755 cpetpet.so $(DESTDIR)/lib
 	install -m644 share/cpetpet/* $(DESTDIR)/share/cpetpet
 
+uninstall:
+	$(RM) -r $(DESTDIR)/share/cpetpet
+	$(RM) $(DESTDIR)/lib/cpetpet.{a,so}
+
 clean:
 	$(RM) *.a *.o *.so
 
 cleanall: clean
 	$(RM) config.* config.*
 
-.PHONY: all clean install
+.PHONY: all clean cleanall install uninstall
