@@ -4,6 +4,6 @@
 #include <stddef.h>
 
 
-void CPetPet(const char *in, const char *out, const size_t speed);
+void CPetPet(const char *in, const char *out, const size_t delay);
 
 #endif /* __PETPET_C__ */

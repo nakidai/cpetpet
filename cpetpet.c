@@ -11,7 +11,7 @@
 #include "config.h"
 
 
-int main(int argc, char **argv)
+void CPetPet(const char *in, const char *out, const size_t delay)
 {
     MagickWand *result, *concat, *hand, *avatar, *edited;
     PixelWand *empty;
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
     MagickSetImageDispose(result, BackgroundDispose);
 
-    MagickReadImage(avatar, "naki.png");
+    MagickReadImage(avatar, in);
     MagickResizeImage(avatar, 128, 128, Lanczos2Filter);
 
     for (int i = 0; i < FRAMES; ++i)
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
         edited = CloneMagickWand(avatar);
         MagickNewImage(concat, MagickGetImageWidth(avatar), MagickGetImageHeight(avatar), empty);
         MagickSetImageDispose(concat, BackgroundDispose);
-        MagickSetImageDelay(concat, 2);
+        MagickSetImageDelay(concat, delay);
         MagickResizeImage(edited, (double)MagickGetImageWidth(avatar)*width, (double)MagickGetImageHeight(avatar)*height, Lanczos2Filter);
         MagickReadImage(hand, filenamebuf);
 
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
         ClearMagickWand(concat);
         ClearMagickWand(hand);
     }
-    MagickWriteImages(result, "petpet.gif", MagickTrue);
+    MagickWriteImages(result, out, MagickTrue);
 
     DestroyMagickWand(result);
     DestroyMagickWand(concat);
