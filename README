@@ -1,0 +1,7 @@
+cpetpet
+-------
+Library for petting some pictures
+
+For usage check include/cpetpet.c, it's not so big ;)
+
+This library depends on the imagemagick of version 7
