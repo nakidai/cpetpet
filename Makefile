@@ -27,10 +27,12 @@ install: all
 	install -m644 cpetpet.a $(DESTDIR)/lib
 	install -m755 cpetpet.so $(DESTDIR)/lib
 	install -m644 share/cpetpet/* $(DESTDIR)/share/cpetpet
+	install -m644 cpetpet.h $(DESTDIR)/include
 
 uninstall:
 	$(RM) -r $(DESTDIR)/share/cpetpet
 	$(RM) $(DESTDIR)/lib/cpetpet.{a,so}
+	$(RM) $(DESTDIR)/include/cpetpet.h
 
 clean:
 	$(RM) *.a *.o *.so
