@@ -17,7 +17,7 @@ $(OBJS): config.h cpetpet.h
 libcpetpet.a libcpetpet.so: $(OBJS)
 
 libcpetpet.so:
-	cc -shared -o $@ ${LDFLAGS} ${LDLIBS} $^
+	cc -shared -o $@ $^ ${LDFLAGS}
 
 libcpetpet.a:
 	ar rcs $@ $^
