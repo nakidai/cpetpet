@@ -13,19 +13,6 @@
 
 #define FRAMES 10
 
-static char *gifs[FRAMES] = {
-    SHAREDIR "/pet0.gif",
-    SHAREDIR "/pet1.gif",
-    SHAREDIR "/pet2.gif",
-    SHAREDIR "/pet3.gif",
-    SHAREDIR "/pet4.gif",
-    SHAREDIR "/pet5.gif",
-    SHAREDIR "/pet6.gif",
-    SHAREDIR "/pet7.gif",
-    SHAREDIR "/pet8.gif",
-    SHAREDIR "/pet9.gif",
-};
-
 void CPetPet(const char *in, const char *out, const size_t delay)
 {
     MagickWand *result, *concat, *hand, *avatar, *edited;
