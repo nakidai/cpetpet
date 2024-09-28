@@ -38,11 +38,11 @@ void CPetPet(const char *in, const char *out, const size_t delay)
 
     empty = NewPixelWand();
 
-    result = NewMagickWand();
-    concat = NewMagickWand();
-    avatar = NewMagickWand();
-    concat = NewMagickWand();
-    hand   = NewMagickWand();
+    result     = NewMagickWand();
+    concat     = NewMagickWand();
+    avatar     = NewMagickWand();
+    concat     = NewMagickWand();
+    hand       = NewMagickWand();
 
     PixelSetColor(empty, "none");
 
@@ -50,6 +50,9 @@ void CPetPet(const char *in, const char *out, const size_t delay)
 
     MagickReadImage(avatar, in);
     MagickResizeImage(avatar, 128, 128, Lanczos2Filter);
+
+    MagickReadImage(hand, SHAREDIR "/pet.gif");
+    MagickSetFirstIterator(hand);
 
     for (int i = 0; i < FRAMES; ++i)
     {
@@ -64,14 +67,13 @@ void CPetPet(const char *in, const char *out, const size_t delay)
         MagickSetImageDispose(concat, BackgroundDispose);
         MagickSetImageDelay(concat, delay);
         MagickResizeImage(edited, (double)MagickGetImageWidth(avatar)*width, (double)MagickGetImageHeight(avatar)*height, Lanczos2Filter);
-        MagickReadImage(hand, gifs[i]);
+        MagickNextImage(hand);
 
         MagickCompositeImage(concat, edited, OverCompositeOp, MagickTrue, MagickGetImageWidth(concat)*offset_x, MagickGetImageHeight(concat)*offset_y);
         MagickCompositeImage(concat, hand, OverCompositeOp, MagickTrue, 0, 0);
         MagickAddImage(result, concat);
 
         ClearMagickWand(concat);
-        ClearMagickWand(hand);
     }
     MagickWriteImages(result, out, MagickTrue);
 
