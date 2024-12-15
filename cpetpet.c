@@ -21,8 +21,6 @@ void CPetPet(const char *in, const char *out, const size_t delay)
     double width, height;
     double offset_x, offset_y;
 
-    MagickWandGenesis();
-
     empty = NewPixelWand();
 
     result     = NewMagickWand();
@@ -71,6 +69,4 @@ void CPetPet(const char *in, const char *out, const size_t delay)
     DestroyMagickWand(hand);
 
     DestroyPixelWand(empty);
-
-    MagickWandTerminus();
 }
